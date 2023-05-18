@@ -8,6 +8,7 @@ const morgan = require("morgan");
 // express 어플리케이션 => 인스턴스 만들기
 const app = express();
 
+// 일반 미들웨어 => 3개의 파라미터
 // 미들웨어 추가 시 사용 => use()
 const logger = (req, res, next) => {
   console.log("i am logger");
@@ -20,9 +21,24 @@ const logger2 = (req, res, next) => {
   next();
 };
 
+//에러미들웨어 사용해보기 예시
+function commonnw(req, res, next) {
+  console.log("commonnw");
+  next(new Error("error ouccered"));
+}
+
+// 에러 미들웨어 => 4개의 파라미터, 첫번째 파라미터가 error
+function errormw(err, req, res, next) {
+  console.log(err.message);
+  //에러를 처리하거나
+  next();
+}
+
 // 미들웨어 함수
 app.use(logger);
 app.use(logger2);
+app.use(commonnw);
+app.use(errormw);
 
 //써드파티 미들웨어 사용하기
 // require로 불러온 후, app.use 함수로 불러온다.
