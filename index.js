@@ -8,7 +8,13 @@ const logger = (req, res, next) => {
   next();
 };
 
-app.use(logger);
+const logger2 = (req, res, next) => {
+  console.log("i am logger2");
+  next();
+};
+
+app.use(logger); // 미들웨어 함수
+app.use(logger2);
 
 app.listen(3000, () => {
   console.log("Server is running");
