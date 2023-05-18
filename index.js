@@ -44,8 +44,15 @@ app.use(errormw);
 // require로 불러온 후, app.use 함수로 불러온다.
 app.use(morgan("dev")); //출력결과예시 : GET / 404 3.726 ms - 139
 
+//라우팅 설정
+app.get("/", function (req, res) {
+  // 문자열 출력 메소드
+  res.send("Hello World");
+});
+
+//서버 요청대기 상태
 app.listen(3001, () => {
-  console.log("Server is running");
+  console.log("Express Server port 3001");
 });
 
 // ================================================================================================//
