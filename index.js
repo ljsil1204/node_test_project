@@ -47,3 +47,9 @@ app.use(morgan("dev")); //출력결과예시 : GET / 404 3.726 ms - 139
 app.listen(3001, () => {
   console.log("Server is running");
 });
+
+// ================================================================================================//
+// 익스프레스 요청객체와 응답객체
+// http 모듈의 request객체, response 객체를 래핑
+// 요청객체 메소드 : req.params(), req,query(), req.body()
+// 응답객체 메소드 : res.send(), res.status(), res.json()
